@@ -10,26 +10,38 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        stack=[]
-        answer=[]
-        temp=root
-        #inorder_trav=[]
-        default_dict=collections.defaultdict(lambda:0)
-        max_count=0
-        while len(stack)>0 or temp is not None:
-            if temp is not None:
-                stack.append(temp)
-                temp=temp.left
-            else:
-                temp=stack.pop()
-                #inorder_trav.append(temp.val)
-                default_dict[temp.val]=default_dict[temp.val]+1
-                if default_dict[temp.val]>max_count:
-                    max_count=default_dict[temp.val]
-                temp=temp.right
-        #print(max_count)
+#         stack=[]
+#         answer=[]
+#         temp=root
+#         #inorder_trav=[]
+#         default_dict=collections.defaultdict(lambda:0)
+#         max_count=0
+#         while len(stack)>0 or temp is not None:
+#             if temp is not None:
+#                 stack.append(temp)
+#                 temp=temp.left
+#             else:
+#                 temp=stack.pop()
+#                 #inorder_trav.append(temp.val)
+#                 default_dict[temp.val]=default_dict[temp.val]+1
+#                 if default_dict[temp.val]>max_count:
+#                     max_count=default_dict[temp.val]
+#                 temp=temp.right
+#         #print(max_count)
         
-        for key,value in default_dict.items():
-            if value==max_count:
-                answer.append(key)
-        return answer
+#         for key,value in default_dict.items():
+#             if value==max_count:
+#                 answer.append(key)
+#         return answer
+    
+        count = collections.Counter()
+
+        def dfs(node):
+            if node:
+                count[node.val] += 1
+                dfs(node.left)
+                dfs(node.right)
+
+        dfs(root)
+        max_ct = max(count.itervalues())
+        return [k for k, v in count.iteritems() if v == max_ct]

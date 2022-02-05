@@ -4,11 +4,13 @@ class Solution(object):
         :type stones: List[int]
         :rtype: int
         """
-        pq=[-x for x in stones]
-        heapify(pq)
-        while(len(pq)>1):
-            x=heappop(pq)
-            y=heappop(pq)
+        for i in range(len(stones)):
+            stones[i]*=-1
+            
+        heapify(stones)
+        while(len(stones)>1):
+            x=heappop(stones)
+            y=heappop(stones)
             if x-y<0:
-                heappush(pq,x-y)
-        return -pq[0] if pq else 0
+                heappush(stones,x-y)
+        return -stones[0] if stones else 0

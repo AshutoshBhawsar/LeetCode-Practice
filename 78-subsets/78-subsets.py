@@ -5,8 +5,9 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # Cascading subsets ######### O(n * 2^n)
-        answer = [[]]
-        for num in nums:
-            answer += [curr + [num] for curr in answer]
-        return answer
+        res = [[]]
+        for n in nums:
+            for i in range(len(res)):
+                res.append(res[i] + [n])
+        return res
         

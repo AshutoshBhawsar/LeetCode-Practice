@@ -9,3 +9,4 @@ class Solution(object):
         for num in nums:
             answer += [curr + [num] for curr in answer]
         return answer
+        

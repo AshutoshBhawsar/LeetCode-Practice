@@ -10,8 +10,12 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root:
-            count1=self.maxDepth(root.left)
-            count2=self.maxDepth(root.right)
-            return 1+max(count1,count2)
-        return 0
+        # Simple Recursion 
+        # if root:
+        #     count1=self.maxDepth(root.left)
+        #     count2=self.maxDepth(root.right)
+        #     return 1+max(count1,count2)
+        # return 0
+        
+        # Same but one liner
+        return 1+max(self.maxDepth(root.left),self.maxDepth(root.right)) if root else 0

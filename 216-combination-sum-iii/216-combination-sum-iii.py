@@ -15,20 +15,34 @@ class Solution(object):
         # return ans
     
         # backtracking###########
-        results=[]
+#         results=[]
         
-        def backtrack(remain,comb,next_start):
-            if remain==0 and len(comb)==k:
-                results.append(list(comb))
-                return
-            elif remain<0 or len(comb)==k:
-                return
+#         def backtrack(remain,comb,next_start):
+#             if remain==0 and len(comb)==k:
+#                 results.append(list(comb))
+#                 return
+#             elif remain<0 or len(comb)==k:
+#                 return
             
-            for i in range(next_start,9):
-                comb.append(i+1)
-                backtrack(remain-i-1,comb,i+1)
-                comb.pop()
+#             for i in range(next_start,9):
+#                 comb.append(i+1)
+#                 backtrack(remain-i-1,comb,i+1)
+#                 comb.pop()
         
-        backtrack(n,[],0)
+#         backtrack(n,[],0)
         
-        return results
+#         return results
+    
+        #DFS
+        
+        ret = []
+        self.dfs(list(range(1, 10)), k, n, [], ret)
+        return ret
+    
+    def dfs(self, nums, k, n, path, ret):
+        if k < 0 or n < 0:
+            return 
+        if k == 0 and n == 0:
+            ret.append(path)
+        for i in range(len(nums)):
+            self.dfs(nums[i+1:], k-1, n-nums[i], path+[nums[i]], ret)

@@ -23,4 +23,3 @@ class Solution(object):
             if i not in list1:
                 ans+=s[i]
         return ans
-            

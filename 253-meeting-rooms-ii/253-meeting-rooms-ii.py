@@ -12,3 +12,4 @@ class Solution(object):
                 heapq.heappop(free_rooms)
             heapq.heappush(free_rooms, i[1])
         return len(free_rooms)
+        

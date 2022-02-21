@@ -4,6 +4,7 @@ class Solution(object):
         :type sticks: List[int]
         :rtype: int
         """
+        # Greedy approach
         if len(sticks)<2:
             return 0
         heapq.heapify(sticks)
@@ -13,3 +14,5 @@ class Solution(object):
             count+=val
             heapq.heappush(sticks,val)
         return count
+    
+        

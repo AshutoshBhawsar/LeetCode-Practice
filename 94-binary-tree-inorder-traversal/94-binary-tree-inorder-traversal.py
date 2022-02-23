@@ -11,17 +11,22 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        stack=[]
-        temp=root
-        answer=[]
-        while len(stack)>0 or temp is not None:
-            if temp is not None:
-                stack.append(temp)
-                temp=temp.left
-            else:
-                temp=stack.pop()
-                answer.append(temp.val)
-                temp=temp.right
-        return answer
+        # using stack
+        # stack=[]
+        # temp=root
+        # answer=[]
+        # while len(stack)>0 or temp is not None:
+        #     if temp is not None:
+        #         stack.append(temp)
+        #         temp=temp.left
+        #     else:
+        #         temp=stack.pop()
+        #         answer.append(temp.val)
+        #         temp=temp.right
+        # return answer
+        
+        #using recursion
+        
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
                 
                 

@@ -9,20 +9,35 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        if not head:
-            return None
-        deque=collections.deque()
-        temp=head
-        while(temp):
-            if temp.val>=0:
-                deque.append(temp.val)
+        # Using extra space
+        # if not head:
+        #     return None
+        # deque=collections.deque()
+        # temp=head
+        # while(temp):
+        #     if temp.val>=0:
+        #         deque.append(temp.val)
+        #     else:
+        #         deque.appendleft(temp.val)
+        #     temp=temp.next
+        # newHead=ListNode(deque.popleft())
+        # temp=newHead
+        # while(deque):
+        #     temp.next=ListNode(deque.popleft())
+        #     temp=temp.next
+        # return newHead
+        
+        
+        
+        # Insert at head
+        curr = head
+        while curr.next:
+            if curr.val > curr.next.val:
+                temp = curr.next
+                curr.next = temp.next
+                temp.next = head
+                head = temp
             else:
-                deque.appendleft(temp.val)
-            temp=temp.next
-        newHead=ListNode(deque.popleft())
-        temp=newHead
-        while(deque):
-            temp.next=ListNode(deque.popleft())
-            temp=temp.next
-        return newHead
+                curr = curr.next
+        return head
                 

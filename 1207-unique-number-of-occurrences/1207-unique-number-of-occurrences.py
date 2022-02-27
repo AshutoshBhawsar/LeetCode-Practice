@@ -4,11 +4,17 @@ class Solution(object):
         :type arr: List[int]
         :rtype: bool
         """
-        counts=collections.Counter(arr)
-        hmap={}
-        for element in counts:
-            temp=counts[element]
-            if temp in hmap:
-                return False
-            hmap[temp]=element
-        return True
+        # 2 Liner
+        counts=collections.Counter(arr).values()
+        return len(counts)==len(set(counts))
+        
+        
+        # Full Simulation using counter and hmap
+        # counts=collections.Counter(arr)
+        # hmap={}
+        # for element in counts:
+        #     temp=counts[element]
+        #     if temp in hmap:
+        #         return False
+        #     hmap[temp]=element
+        # return True

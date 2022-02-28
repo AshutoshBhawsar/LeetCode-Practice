@@ -1,8 +1,9 @@
 class Solution(object):
-    def truncateSentence(self, s, k):
+    def reverseWords(self, s):
         """
-        :type s: str
-        :type k: int
-        :rtype: str
+        :type s: List[str]
+        :rtype: None Do not return anything, modify s in-place instead.
         """
-        return " ".join(s.split()[:k])
+        s1="".join(x for x in s)
+        s2=" ".join(x for x in reversed(s1.split()))
+        s[:]=s2[:]

@@ -5,4 +5,4 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        return " ".join(x for x in s.split()[:k])
+        return " ".join(s.split()[:k])

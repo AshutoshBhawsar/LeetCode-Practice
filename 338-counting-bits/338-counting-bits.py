@@ -13,24 +13,24 @@ class Solution(object):
         
         
         # pop count approach ###########
-        def pop_count(x):
-            count = 0
-            while x != 0:
-                x &= x - 1 # zeroing out the least significant nonzero bit
-                count += 1
-            return count
+#         def pop_count(x):
+#             count = 0
+#             while x != 0:
+#                 x &= x - 1 # zeroing out the least significant nonzero bit
+#                 count += 1
+#             return count
             
-        ans = [0] * (n + 1)
-        for x in range(n + 1):
-            ans[x] = pop_count(x)
+#         ans = [0] * (n + 1)
+#         for x in range(n + 1):
+#             ans[x] = pop_count(x)
     
-        return ans  
+#         return ans  
 
         
         # DP ########
-        # ans = [0] * (n + 1)
-        # for x in range(1, n + 1):
-        #     ans[x] = ans[x & (x - 1)] + 1
-        # return ans 
+        ans = [0] * (n + 1)
+        for x in range(1, n + 1):
+            ans[x] = ans[x & (x - 1)] + 1
+        return ans 
 
         

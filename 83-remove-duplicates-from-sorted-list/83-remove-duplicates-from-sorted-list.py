@@ -9,19 +9,11 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return
-        hmap=collections.OrderedDict()
-        
+        # simple one pass    
         temp=head
-        while(temp):
-            if temp.val not in hmap:
-                hmap[temp.val]=temp.val
-            temp=temp.next
-        dummy=ListNode(0)
-        temp=dummy
-        for item in hmap.values():
-            new=ListNode(item)
-            temp.next=new
-            temp=new
-        return dummy.next
+        while(temp and temp.next):
+            if temp.val==temp.next.val:
+                temp.next=temp.next.next
+            else:
+                temp=temp.next
+        return head

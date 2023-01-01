@@ -6,17 +6,27 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return None
-        hmap={}
-        temp=head
-        i=0
-        while temp is not None:
-            if temp in hmap:
-                return temp
-            hmap[temp]=i
-            i+=1
-            temp=temp.next
-        return None
+        # Brute Force
+        # if not head:
+        #     return None
+        # hmap={}
+        # temp=head
+        # i=0
+        # while temp is not None:
+        #     if temp in hmap:
+        #         return temp
+        #     hmap[temp]=i
+        #     i+=1
+        #     temp=temp.next
+        # return None
         
+        # FLoyd's magic
+        slow = fast = head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+            if slow == fast: break
+        else: return None
+        while head != slow:
+            head, slow = head.next, slow.next
+        return head
             

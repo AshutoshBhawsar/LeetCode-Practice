@@ -7,12 +7,24 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         # Brute Force
-        temp=head
-        while temp!=None:
-            if temp.val==float('-inf'):
-                return True
-            temp.val=float('-inf')
-            temp=temp.next
+#         temp=head
+#         while temp!=None:
+#             if temp.val==float('-inf'):
+#                 return True
+#             temp.val=float('-inf')
+#             temp=temp.next
             
-        return False
+#         return False
+
+        # FLoyd's Tortoise and Hare cycle detection
+        if head is None:
+            return False
+        slow = head
+        fast = head.next
+        while slow != fast:
+            if fast is None or fast.next is None:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        return True
             
